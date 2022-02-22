@@ -1,0 +1,51 @@
+{
+  "name": "vite-plugin-turbosnap",
+  "version": "1.0.0",
+  "description": "Enables the use of Chromatic Turbosnap in vite storybook projects",
+  "keywords": [
+    "vite-plugin",
+    "chromatic",
+    "turbosnap",
+    "storybook",
+    "vite",
+    "snapshot"
+  ],
+  "author": "Ian VanSchooten <ian.vanschooten@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/IanVS/vite-plugin-turbosnap#readme",
+  "bugs": {
+    "url": "https://github.com/IanVS/vite-plugin-turbosnap/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IanVS/vite-plugin-turbosnap.git"
+  },
+  "files": [
+    "dist",
+    "*.d.ts",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rimraf dist && unbuild",
+    "format": "prettier --write . --ignore-path .gitignore",
+    "format:check": "prettier --check . --ignore-path .gitignore",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.19",
+    "prettier": "^2.5.1",
+    "typescript": "^4.5.5",
+    "unbuild": "^0.6.9",
+    "vite": "^2.8.4"
+  }
+}
