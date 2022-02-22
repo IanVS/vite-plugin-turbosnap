@@ -8,11 +8,21 @@ _This is experimental, and may not support all project and storybook configurati
 
 Please open an issue if you experience any trouble, and be sure to include the log file that is generated from the `--diagnostics` flag of chromatic-cli, as well as the cli's output using the `--debug --trace-changed=expanded` flags.
 
-## Installation
+## Setup
+
+### Prerequisites
+
+- A [Chromatic](https://www.chromatic.com/) account.
+- chromatic-cli [6.5.0](https://github.com/chromaui/chromatic-cli/blob/main/CHANGELOG.md#650---2022-02-21) or higher.
+- storybook-builder-vite [0.1.17](https://github.com/eirslett/storybook-builder-vite/releases/tag/v0.1.17) or higher.
+
+### Install
 
 ```bash
-npm i -D vite-plugin-turbosnap
+npm i --save-dev vite-plugin-turbosnap
 ```
+
+### Configuration
 
 Add this plugin to `viteFinal` in your `.storybook/main.js`:
 
@@ -24,7 +34,8 @@ const turbosnap = require('vite-plugin-turbosnap');
 module.exports = {
   core: { builder: 'storybook-builder-vite' },
   async viteFinal(config, { configType }) {
-    if (configType === 'PRODUCTION' && outputDir) {
+    // Turbosnap is only useful when building for production
+    if (configType === 'PRODUCTION') {
       config.plugins.push(turbosnap({ rootDir: config.root }));
     }
 
@@ -38,12 +49,6 @@ module.exports = {
 ## Usage
 
 When you run `build-storybook` to create your production storybook, an additional file will be created in the output directory, named `preview-stats.json`. See the [chromatic turbosnap docs](https://www.chromatic.com/docs/turbosnap) for more information on how to configure and use turbosnap.
-
-## Prerequisites
-
-- A [Chromatic](https://www.chromatic.com/) account.
-- chromatic-cli [6.5.0](https://github.com/chromaui/chromatic-cli/blob/main/CHANGELOG.md#650---2022-02-21) or higher.
-- storybook-builder-vite 0.1.17 or higher.
 
 ## How it works
 
