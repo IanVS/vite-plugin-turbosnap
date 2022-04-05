@@ -13,8 +13,8 @@ Please open an issue if you experience any trouble, and be sure to include the l
 ### Prerequisites
 
 - A [Chromatic](https://www.chromatic.com/) account.
-- chromatic-cli [6.5.0](https://github.com/chromaui/chromatic-cli/blob/main/CHANGELOG.md#650---2022-02-21) or higher.
-- storybook-builder-vite [0.1.17](https://github.com/eirslett/storybook-builder-vite/releases/tag/v0.1.17) or higher.
+- `chromatic-cli` [6.5.0](https://github.com/chromaui/chromatic-cli/blob/main/CHANGELOG.md#650---2022-02-21) or higher.
+- `@storybook/builder-vite` [0.1.22](https://github.com/storybookjs/builder-vite/releases/tag/v0.1.22) or higher.
 
 ### Install
 
@@ -32,7 +32,7 @@ Add this plugin to `viteFinal` in your `.storybook/main.js`:
 const turbosnap = require('vite-plugin-turbosnap');
 
 module.exports = {
-  core: { builder: 'storybook-builder-vite' },
+  core: { builder: '@storybook/builder-vite' },
   async viteFinal(config, { configType }) {
     // Turbosnap is only useful when building for production
     if (configType === 'PRODUCTION') {
