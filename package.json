@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-turbosnap",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Enables the use of Chromatic Turbosnap in vite storybook projects",
   "keywords": [
     "vite-plugin",
