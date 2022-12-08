@@ -26,23 +26,19 @@ npm i --save-dev vite-plugin-turbosnap
 
 Add this plugin to `viteFinal` in your `.storybook/main.js`:
 
-```ts
+```js
 // .storybook/main.js
 
 const turbosnap = require('vite-plugin-turbosnap');
+const { mergeConfig } = require('vite');
 
 module.exports = {
   core: { builder: '@storybook/builder-vite' },
   async viteFinal(config, { configType }) {
-    // Turbosnap is only useful when building for production
-    if (configType === 'PRODUCTION') {
-      config.plugins.push(turbosnap({ rootDir: config.root }));
-    }
-
-    // ...And any other config you need to change...
-
-    // return the customized config
-    return config;
+    return mergeConfig(config, {
+      plugins: configType === 'PRODUCTION' ? [turbosnap({ rootDir: config.root ?? process.cwd() })] : [],
+      // ...And any other config you need to change...
+    });
   },
 ```
 
