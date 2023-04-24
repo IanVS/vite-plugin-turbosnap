@@ -101,7 +101,9 @@ export default function pluginTurbosnap({
             if (statsMap.has(depId)) {
               const m = statsMap.get(depId);
               if (m) {
-                m.reasons = (m.reasons ?? []).concat(createReasons([mod.id]));
+                m.reasons = (m.reasons ?? [])
+                  .concat(createReasons([mod.id]))
+                  .filter((r) => r.moduleName !== depId);
                 statsMap.set(depId, m);
               }
             } else {
