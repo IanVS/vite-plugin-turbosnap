@@ -79,8 +79,8 @@ export default function pluginTurbosnap({
     importers?: readonly string[]
   ): Module {
     return {
-      id: normalize(filename),
-      name: normalize(filename),
+      id: filename,
+      name: filename,
       reasons: createReasons(importers),
     };
   }
@@ -96,11 +96,14 @@ export default function pluginTurbosnap({
         mod.importedIds
           .concat(mod.dynamicallyImportedIds)
           .filter((name) => isUserCode(name))
-          .forEach((depId) => {
+          .forEach((depIdUnsafe) => {
+            const depId = normalize(depIdUnsafe);
             if (statsMap.has(depId)) {
               const m = statsMap.get(depId);
               if (m) {
-                m.reasons = (m.reasons ?? []).concat(createReasons([mod.id]));
+                m.reasons = (m.reasons ?? [])
+                  .concat(createReasons([mod.id]))
+                  .filter((r) => r.moduleName !== depId);
                 statsMap.set(depId, m);
               }
             } else {
