@@ -36,8 +36,15 @@ export default {
   // ... your existing storybook config
   async viteFinal(config, { configType }) {
     return mergeConfig(config, {
-      plugins: configType === 'PRODUCTION' ? [turbosnap({ rootDir: config.root ?? process.cwd() })] : [],
-      // ...And any other config you need to change...
+      plugins:
+        configType === "PRODUCTION"
+          ? [
+              turbosnap({
+                // This should be the base path of your storybook.  In monorepos, you may only need process.cwd().
+                rootDir: config.root ?? process.cwd(),
+              }),
+            ]
+          : [],
     });
   },
 };
