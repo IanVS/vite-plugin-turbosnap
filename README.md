@@ -29,17 +29,25 @@ Add this plugin to `viteFinal` in your `.storybook/main.js`:
 ```js
 // .storybook/main.js
 
-const turbosnap = require('vite-plugin-turbosnap');
-const { mergeConfig } = require('vite');
+import turbosnap from "vite-plugin-turbosnap";
+import { mergeConfig } from "vite";
 
-module.exports = {
-  core: { builder: '@storybook/builder-vite' },
+export default {
+  // ... your existing storybook config
   async viteFinal(config, { configType }) {
     return mergeConfig(config, {
-      plugins: configType === 'PRODUCTION' ? [turbosnap({ rootDir: config.root ?? process.cwd() })] : [],
-      // ...And any other config you need to change...
+      plugins:
+        configType === "PRODUCTION"
+          ? [
+              turbosnap({
+                // This should be the base path of your storybook.  In monorepos, you may only need process.cwd().
+                rootDir: config.root ?? process.cwd(),
+              }),
+            ]
+          : [],
     });
   },
+};
 ```
 
 ## Usage
