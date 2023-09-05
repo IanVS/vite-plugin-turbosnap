@@ -29,10 +29,10 @@ Add this plugin to `viteFinal` in your `.storybook/main.js`:
 ```js
 // .storybook/main.js
 
-const turbosnap = require('vite-plugin-turbosnap');
-const { mergeConfig } = require('vite');
+import turbosnap from "vite-plugin-turbosnap";
+import { mergeConfig } from "vite";
 
-module.exports = {
+export default {
   // ... your existing storybook config
   async viteFinal(config, { configType }) {
     return mergeConfig(config, {
@@ -40,6 +40,7 @@ module.exports = {
       // ...And any other config you need to change...
     });
   },
+};
 ```
 
 ## Usage
