@@ -33,7 +33,7 @@ const turbosnap = require('vite-plugin-turbosnap');
 const { mergeConfig } = require('vite');
 
 module.exports = {
-  core: { builder: '@storybook/builder-vite' },
+  // ... your existing storybook config
   async viteFinal(config, { configType }) {
     return mergeConfig(config, {
       plugins: configType === 'PRODUCTION' ? [turbosnap({ rootDir: config.root ?? process.cwd() })] : [],
