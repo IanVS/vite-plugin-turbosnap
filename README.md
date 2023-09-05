@@ -14,7 +14,7 @@ Please open an issue if you experience any trouble, and be sure to include the l
 
 - A [Chromatic](https://www.chromatic.com/) account.
 - `chromatic-cli` [6.5.0](https://github.com/chromaui/chromatic-cli/blob/main/CHANGELOG.md#650---2022-02-21) or higher.
-- `@storybook/builder-vite` [0.1.22](https://github.com/storybookjs/builder-vite/releases/tag/v0.1.22) or higher.
+- Storybook 7.0+, or 6.5 with `@storybook/builder-vite` [0.1.22](https://github.com/storybookjs/builder-vite/releases/tag/v0.1.22) or higher.
 
 ### Install
 
