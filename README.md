@@ -8,13 +8,16 @@ _This is experimental, and may not support all project and storybook configurati
 
 Please open an issue if you experience any trouble, and be sure to include the log file that is generated from the `--diagnostics` flag of chromatic-cli, as well as the cli's output using the `--debug --trace-changed=expanded` flags.
 
+> [!NOTE]
+> Storybook 8 [has this plugin built-in](https://github.com/storybookjs/storybook/blob/v8.0.0/MIGRATION.md#turbosnap-vite-plugin-is-no-longer-needed) and will automatically remove it from your config. Use `--stats-json` when building Storybook to enable Turbosnap instead.
+
 ## Setup
 
 ### Prerequisites
 
 - A [Chromatic](https://www.chromatic.com/) account.
 - `chromatic-cli` [6.5.0](https://github.com/chromaui/chromatic-cli/blob/main/CHANGELOG.md#650---2022-02-21) or higher.
-- Storybook 7.0+, or 6.5 with `@storybook/builder-vite` [0.1.22](https://github.com/storybookjs/builder-vite/releases/tag/v0.1.22) or higher.
+- Storybook 7, or 6.5 with `@storybook/builder-vite` [0.1.22](https://github.com/storybookjs/builder-vite/releases/tag/v0.1.22) or higher.
 
 ### Install
 
